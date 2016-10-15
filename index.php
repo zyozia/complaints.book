@@ -11,6 +11,7 @@ $dbObject = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_
 // подключаем ядро сайта
 //include (SITE_PATH . DS . 'core' . DS . 'core.php'); 
  echo SITE_PATH;
+echo '<img src="images/img/ABW.png">';
 // Загружаем router
 $router = new Router($registry);
 // записываем данные в реестр

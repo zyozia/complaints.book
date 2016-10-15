@@ -9,17 +9,13 @@ include ('config.php');
 $dbObject = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS,array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'' ));
 //$dbObject->exec('SET CHARACTER SET utf8');
 // подключаем ядро сайта
-//include (SITE_PATH . DS . 'core' . DS . 'core.php'); 
-include (SITE_PATH . 'core' . DS . 'core.php'); 
-
-echo SITE_PATH;
-echo 1;
+include (SITE_PATH . DS . 'core' . DS . 'core.php'); 
+ 
 // Загружаем router
 $router = new Router($registry);
 // записываем данные в реестр
 $registry->set ('router', $router);
 // задаем путь до папки контроллеров.
-//$router->setPath (SITE_PATH .DS . 'controllers');
-$router->setPath (SITE_PATH . 'controllers');
+$router->setPath (SITE_PATH .DS . 'controllers');
 // запускаем маршрутизатор
 $router->start();

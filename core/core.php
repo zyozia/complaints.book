@@ -22,14 +22,8 @@ function __autoload($className) {
         }
     }
     // путь до класса
-    //$file = SITE_PATH .DS. $folder . DS . $filename;
-    $file = SITE_PATH . $folder . DS . $filename;
-	
-	echo $file;
-	
-	if(is_file($file)){
-    echo $file."<br>";
-	}
+    $file = SITE_PATH .DS. $folder . DS . $filename;
+   // echo $file."<br>";
     // проверяем наличие файла
     if (file_exists($file) == false) {
         return false;

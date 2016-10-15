@@ -10,7 +10,9 @@ $dbObject = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_
 //$dbObject->exec('SET CHARACTER SET utf8');
 // подключаем ядро сайта
 include (SITE_PATH . DS . 'core' . DS . 'core.php'); 
- 
+
+echo SITE_PATH;
+
 // Загружаем router
 $router = new Router($registry);
 // записываем данные в реестр

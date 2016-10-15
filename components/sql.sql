@@ -32,15 +32,17 @@ INSERT IGNORE INTO `users` (`id`, `name`, `login`, `pass`) VALUES
 CREATE TABLE IF NOT EXISTS complaints
 (
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-	username VARCHAR(50) NOT NULL COMMENT 'Name user',
-	email VARCHAR(50) NOT NULL  COMMENT 'Email Users',
-	site VARCHAR(50)  DEFAULT NULL COMMENT 'Site',
-    country CHAR(3) DEFAULT NULL COMMENT 'Country user',
+	username VARCHAR(100) NOT NULL COMMENT 'Name user',
+	email VARCHAR(100) NOT NULL  COMMENT 'Email Users',
+	site VARCHAR(255) COMMENT 'Site',
+    country VARCHAR(3)COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT 'Country user',
     complaint TEXT NOT NULL COMMENT 'Text complaint',
     adddate DATETIME DEFAULT NOW() COMMENT 'Date creation',
-    browser VARCHAR(50) NOT NULL DEFAULT '' COMMENT '',
+    browser VARCHAR(100) NOT NULL DEFAULT '' COMMENT '',
     ipaddress VARCHAR(50) NOT NULL DEFAULT '' COMMENT '',
 	CONSTRAINT pkey_complaints PRIMARY KEY (id),
+	CONSTRAINT fkey_country FOREIGN KEY (country) 
+		REFERENCES countriescodes (code),
 	INDEX ixNamee (username),
     INDEX ixEmail (email),
     INDEX ixDate (adddate)
@@ -58,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `countriescodes` (
   `code` varchar(3) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `title` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`code`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Трёх символьные коды стран (ISO) с их названияме на русско  ';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Трёх символьные коды стран (ISO) с их названияме на русско  ';
 
 -- Дамп даних таблиці `countries_codes`
 -- DELETE IGNORE FROM countriescodes

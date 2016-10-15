@@ -1,7 +1,7 @@
 <?php
 
 Class Model_Complaints Extends ModelDB_Base {
-	 /*
+	/**
 	 * id	int(10)
      * username varchar(50)
      * email	varchar(50)
@@ -12,6 +12,7 @@ Class Model_Complaints Extends ModelDB_Base {
      * browser	varchar(50)
      * ipaddress varchar(50)
      */
+	
     public $id;
 	public $username;
 	public $email;

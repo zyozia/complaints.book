@@ -40,7 +40,7 @@ header("Content-Type: text/html; charset=utf-8");
             </div>
             <div class="collapse navbar-collapse" id="responsive-menu">
                 <ul class="nav navbar-nav">
-                    <li><a href="#">Книга скарг</a></li>
+                    <li><a href="/complaints.book/index/">Книга скарг</a></li>
                 </ul>
                 <form action="" method="post" class="navbar-form navbar-right ">
                     <?php 
@@ -74,9 +74,16 @@ header("Content-Type: text/html; charset=utf-8");
         include ($contentPage);
     ?>
 </div>
-        
-        
-<h1> footer </h1>
+	  
+<div class="navbar-static-bottom navbar-default row-fluid">
+	<div class="navbar-inner">
+		<div class="container">
+			<br>
+			<p><?=date('Y',time())?></p>
+		</div>
+	</div>
+</div>
+	  
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
      

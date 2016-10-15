@@ -62,12 +62,7 @@ class FormValidator_Base
      * 
      * @param   array   $fields The form data
      * @return  void
-     *//*
-    public function addEntries($fields) {
-        foreach ($fields as $fieldname => $value) {
-            $this->_fields[$fieldname] = $this->sanitize($value);
-        }
-    }*/
+     */
     // отримуємо пост, чистимо значення запиуємо масив в перемінну 
     public function addEntries($fields) {
         foreach ($fields as $fieldname => $value) {

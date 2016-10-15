@@ -1,10 +1,4 @@
 <?php
-/*
-function __autoload($name){
-	if(is_file("classes/$name.class.php")){
-		include "classes/$name.class.php";
-	}
-}*/
 // Загрузка классов "на лету"
 function __autoload($className) {
     $filename = strtolower($className) . '.php';

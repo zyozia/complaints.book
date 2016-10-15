@@ -9,4 +9,3 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'complaintbook');
-//http://vk-book.ru/primer-mvc-v-php-tretya-statya-modeli-rabota-s-bazoj-dannyx-sozdanie-chtenie-obnovlenie-i-udalenie-zapisej/

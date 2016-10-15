@@ -68,10 +68,7 @@ Class Router {
         }
  
         $file = $cmd_path . $controller . '.php';
-        $args = $parts;
-       // echo $file.'<br>';/*--------------*/
-        //print_r( $parts).'<br>';/*--------------*/
-        
+        $args = $parts;        
     }
      
     function start() {
@@ -80,21 +77,16 @@ Class Router {
          
         // Проверка существования файла, иначе 404
         if (is_readable($file) == false) {
-           // die ('404 Not Found');
             $action = 'error';
-        //    $controller = 'index';
         }
-       // echo $file.'<br>';/*--------------*/
         // Подключаем файл
         include ($file);
         
         // Создаём экземпляр контроллера
         $class = 'Controller_' . $controller;
-        //echo $class; /*-----------------------*/
         $controller = new $class($this->registry);
         // Если экшен не существует - 404
         if (is_callable(array($controller, $action)) == false) {
-            //die ('404 Not Found-----------');
             $action = 'error';
         }
         

@@ -3,8 +3,6 @@ $(document).ready(function(){
 });
 $( document ).ready( function() {
 	
-	//$("#myTable").tablesorter();
-
 	$(".seting").click(function() {
   		var name = this.id;
 		if(name.length > 0){
@@ -16,8 +14,7 @@ $( document ).ready( function() {
 					var edit = /^btn-[0-9]+$/;
 					var img = '';
 					var country = 'не задано';
-					var site = 'не задано';
-					
+					var site = '';
 					
 					if(data)
 					{
@@ -34,7 +31,7 @@ $( document ).ready( function() {
 								var country = data[1][0].title;
 							}
 							if(data[0]){
-								if(data[0].site != null){site = data[0].site;}
+								if(data[0].site != ' '){site = data[0].site;}
 								div.append('<p><b>Ім\'я</b>: ' + data[0].username + '</p>');
 								div.append('<p><b>Електронна скринька</b>: ' + data[0].email + '</p>');
 								div.append('<p><b>Сайт</b>: ' + site + '</p>');
@@ -57,6 +54,7 @@ $( document ).ready( function() {
 						//Редагувати
 						if (edit.test( name ) ) {
 							var edits = parseFloat(name.substr(4));
+							$('#result').html('');
 							var div = $('#result').empty();
 							div.append('<input type="hidden" name="edit[param]" value="'+ edits +'">');
 							if(data[1][0]){
@@ -109,18 +107,3 @@ $( document ).ready( function() {
 		}
 	});
 });
-
-function show_category(){
-	var pid = $('#per_id').val();
-	$.post("ajax/cms-ajax.php", {'show_category': pid},  function(data){
-	var sentJS = JSON.parse(data);
-	//console.log(sentJS);
-	var i=0;
-	$('#createCategory_r').html('');
-	while(i < sentJS.length){
-		$('#createCategory_r').append('<p class="text"><span onclick=\'change_category('+ sentJS[i]['id'] +',"'+sentJS[i]['name']+'");\'><img src=\"../../img/file_edit2.png\" class=\"cursor\"> </span> '+ sentJS[i]['id'] +' - '+sentJS[i]['name']+'</p>')
-		i++;
-	}	
-	});
-}
-

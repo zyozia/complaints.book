@@ -69,15 +69,17 @@ class Pagination_Base
     public function getPaginator() 
     {
         $paginator = '';
-        if ($this->_page > $this->_listPage+1) $paginator .= ' <a href="?'.$this->_get.'page=1">&laquo;</a> ';
+		$paginator .= '<nav><ul class="pagination">' ;
+        if ($this->_page > $this->_listPage+1) $paginator .= ' <li><a href="?'.$this->_get.'page=1"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a></li> ';
         for ($i = ($this->_page - $this->_listPage); $i < ($this->_page + $this->_listPage+1); $i++) {
                 if ($i > 0 AND $i < $this->_pages+1) {
-                        if ($i == ($this->_page )) $alink = ' <b>'.$i.'</b> ';
-                        else $alink = ' <a href="?'.$this->_get.'page='.$i.'">'.$i.'</a> ';
+                    if ($i == ($this->_page )) $alink = '<li class="active"> <a>'.$i.'</a> </li>';
+                    else $alink = ' <li><a href="?'.$this->_get.'page='.$i.'">'.$i.'</a> </li>';
                         $paginator .= $alink;
-                        }
+                    }
                 }
-        if ($this->_page < $this->_pages-$this->_listPage) $paginator .= ' <a href="?'.$this->_get.'page='.$this->_pages.'">&raquo;</a> ';
+        if ($this->_page < $this->_pages-$this->_listPage) $paginator .= ' <li><a href="?'.$this->_get.'page='.$this->_pages.'"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li> ';
+		$paginator .= '</ul></nav>';
         return $paginator;
     }
     

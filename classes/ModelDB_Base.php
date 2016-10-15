@@ -1,7 +1,7 @@
 <?php
 
-Abstract Class ModelDB_Base {
-//http://vk-book.ru/primer-mvc-v-php-tretya-statya-modeli-rabota-s-bazoj-dannyx-sozdanie-chtenie-obnovlenie-i-udalenie-zapisej/
+Abstract Class ModelDB_Base
+{
 	protected $db;
 	protected $table;
 	private $dataResult;

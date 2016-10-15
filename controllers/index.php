@@ -19,12 +19,12 @@ Class Controller_Index Extends Controller_Base {
         $country = new Model_Countriescodes($select); // створюємо обєкт моделі
         $getCountry = $country->getAllRows(); // отримуємо всі знячення 
         //-----------------------------------
-        // для пагінації підключаємось зо таблиці і дізнаємось к-ть записів
+        // для пагінації підключаємось до таблиці і дізнаємось к-ть записів
         $getComplaint = new Model_Complaints(array('where' => 'id > 0')); 
-        $countComplaint = count($getComplaint->getAllRows()); // получаем все строки
+        $countComplaint = count($getComplaint->getAllRows()); // отримуємо всі знячення
         // створюємо об'єкт пагінації і передаємо :
         // кількість необхідних записів на сторінці // всього записів // кількість пагігацій
-        $pagination = new Pagination_Base(5,$countComplaint,'',10);
+        $pagination = new Pagination_Base(5,$countComplaint,'',15);
         // отримаємо пагінацію
         $pag = $pagination->getPaginator();
         
@@ -85,13 +85,14 @@ Class Controller_Index Extends Controller_Base {
 				$editComplaint->fetchOne();
 				// задаем новые значения
 				$editComplaint->username = htmlspecialchars($forms->entries['username']); 
-				$editComplaint->email = htmlspecialchars($forms->entries['email']); 
-				$editComplaint->site = htmlspecialchars($forms->entries['site']); 
+				$editComplaint->email = htmlspecialchars($forms->entries['email']);
+				if(empty($forms->entries['site'])){$site = ' ';}else{$site=htmlspecialchars($forms->entries['site']);}
+				$editComplaint->site = $site; 
+				echo $site; 
 				$editComplaint->complaint = htmlspecialchars($forms->entries['complaint']); 
 
 				// обновляем запись
 				$result = $editComplaint->update();
-				echo $result;
 				if($result > 0){
 					$resedit[] = "Запис успішно змінено";
 					$session->set('edits',serialize($resedit));
@@ -131,13 +132,10 @@ Class Controller_Index Extends Controller_Base {
             }
 		}
         
-        
         $this->template->vars('complaints', $listComplaint);
 		$this->template->vars('moderator', $moderator);
         $this->template->vars('countrys', $getCountry);
-        $this->template->vars('result', $res    );
         $this->template->vars('pagination', $pag);
-        $this->template->vars('res', $res);
         $this->template->vars('title', 'Книга скарг');
         
         $this->template->view('index');

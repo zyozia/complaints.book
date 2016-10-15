@@ -3,7 +3,7 @@
  * Object-oriented interface for specifying validation rules
  * 
  * @category Forms
- * @author Christopher Wojcik <cpw1485@gmail.com>
+ * 
  */
 class ValidationRule_Base
 {
@@ -41,14 +41,7 @@ class ValidationRule_Base
      * @param   string  $message
      * @param   string  $ruletype
      * @param   mixed   $criteria 
-     *//*
-    public function __construct($fieldname, $message, $ruletype, $criteria = null)
-    {
-        $this->_fieldname = $fieldname;
-        $this->_message = $message;
-        $this->_ruletype = $ruletype;
-        $this->_criteria = $criteria;
-    }*/
+     */
     public function __construct($params)
     {
         if(is_array($params)){

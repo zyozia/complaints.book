@@ -5,14 +5,12 @@
 </div>
 <hr>
 <?php
-
 // повідомлення про успішне редагування
 Messages::getInfo('edits','edit');
 // повідомлення помилок введення форм при редагуванні
 Messages::getWrong('errorFormEdits','edit');
 // інша помилка при редагуванні
 Messages::getWrong('errorEdits','edit');
-
 // повідомлення про додання запису в базу
 Messages::getInfo('create','my');
 //повідомлення помилок введення форм
@@ -23,16 +21,7 @@ Messages::getWrong('errorAut','us');
 Messages::getInfo('del','drop');
 //помилка видалення видалення 
 Messages::getWrong('errors','drop');
-/**/
-Messages::getBrowser();
 ?>
-
-<!--
-<p>Модератору дозволяється - редагувати та видаляти повідомлення.  
-Після успішної авторизації, у тому ж інтерфейсі додати додаткові функціональні елементи для
-забезпечення дій модератора (кнопки Редагувати та Видалити).<hr>
-
--->
 <div class="table-responsive">
 <table  id="myTable" class="table table-striped table-hover table-responsive table-border tablesorter">
 	<thead>
@@ -41,6 +30,7 @@ Messages::getBrowser();
         <th class="text-center">Email</th>
         <th class="text-center">Дата</th>
         <th class="text-center">Скарга</th>
+		<!------Для модератора------->
 		<?php if($moderator):?>
 		<th class="notsort text-center"><button class="btn btn-default"><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i></button></th>
 		<th class="notsort text-center"><button class="btn btn-default"><i class="glyphicon glyphicon-trash" aria-hidden="true"></i></button></th>
@@ -54,13 +44,12 @@ Messages::getBrowser();
         <td><?=$complaint['username']?></td>
         <td><?=$complaint['email']?></td>
         <td><?=date("d.m.Y H:i:s", strtotime($complaint['adddate']));?></td>
-        <td><?=$complaint['complaint']?></td>
-		<?php if($moderator):?>
-		
+        <td><?=$complaint['complaint']?></td>	
+		<!------Для модератора------->
+		<?php if($moderator):?>	
 		<td class="text-center"><button id="btn-<?=$complaint['id']?>" class="btn btn-success seting" data-toggle="modal" data-target="#modal-1"> <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i></button></td>
 		<td class="text-center"><button id="drop-<?=$complaint['id']?>" class="btn btn-danger seting" data-toggle="modal" data-target="#modal-1"><i class="glyphicon glyphicon-trash" aria-hidden="true"></i></button></td>
 		<?php endif; ?>
-		
 	</tr>
     <?php $i++;
 	endforeach; ?>
@@ -69,22 +58,12 @@ Messages::getBrowser();
 </table>
 </div>
 <?=$pagination?>
-<br>
-<!--
-<p>Форма додавання запису в книгу повинна мати наступні поля:
-<br>Ім'я – обов'язкове поле
-<br>E-mail – обов'язкове поле
-<br>Сайт – необов'язкове поле
-<br>CAPTCHA (цифри і букви латинського алфавіту, можна використати готову) – зображення і обов'язкове поле
-<br>текст (безпосередньо сам текст, HTML теги неприпустимі) – обов'язкове поле
 
-<br>
-<br>
--->
 <hr>
-<p class="text-primary">Тут ви можете залишити свый відгук</p>
+<p class="text-primary">Тут ви можете залишити свій відгук</p>
 <p class="text-primary">Поля відзначені<span class="text-danger"> * </span>обовязковідля заповнення</p>
 <br>
+
 <form method="post" action="" class="form-horizontal">
     <div class="form-group">
         <label for="inputName" class="col-sm-2 col-xs-1 control-label"><span class="text-danger"> * </span> Ім'я</label>
@@ -138,7 +117,7 @@ Messages::getBrowser();
 			</div>
 			<div class="modal-body" id="results">
 				<form method="post" action="" class="form-horizontal"id="result">
-					<p>Це модельне вікно</p>
+					<i class="fa fa-spinner fa-spin"></i>
 				</form>
 			</div>
 		</div>

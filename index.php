@@ -12,7 +12,7 @@ $dbObject = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_
 include (SITE_PATH . DS . 'core' . DS . 'core.php'); 
 
 echo SITE_PATH;
-
+echo 1;
 // Загружаем router
 $router = new Router($registry);
 // записываем данные в реестр

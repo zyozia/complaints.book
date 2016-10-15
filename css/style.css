@@ -1,0 +1,23 @@
+table.tablesorter thead tr .header {
+    background-image: url(/complaints.book/fonts/bg.gif);
+    background-repeat: no-repeat;
+	background-position: center right;
+    cursor: pointer;
+}
+table.tablesorter thead tr .header.notsort {
+    background-image: none;
+}
+
+able.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+    background-color: #8dbdd8;
+}
+table.tablesorter thead tr .headerSortDown {
+    background-image: url(/complaints.book/fonts/desc.gif);
+}
+
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+    background-color: #8dbdd8;
+}
+table.tablesorter thead tr .headerSortUp {
+     background-image: url(/complaints.book/fonts/asc.gif);
+}

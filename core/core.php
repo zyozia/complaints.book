@@ -24,8 +24,8 @@ function __autoload($className) {
     // путь до класса
     //$file = SITE_PATH .DS. $folder . DS . $filename;
     $file = SITE_PATH . $folder . DS . $filename;
-	echo $file;
-   // echo $file."<br>";
+	
+    echo $file."<br>";
     // проверяем наличие файла
     if (file_exists($file) == false) {
         return false;

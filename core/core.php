@@ -25,7 +25,9 @@ function __autoload($className) {
     //$file = SITE_PATH .DS. $folder . DS . $filename;
     $file = SITE_PATH . $folder . DS . $filename;
 	
+	if(is_file($file)){
     echo $file."<br>";
+	}
     // проверяем наличие файла
     if (file_exists($file) == false) {
         return false;

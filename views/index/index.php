@@ -61,7 +61,7 @@ Messages::getWrong('errors','drop');
 
 <hr>
 <p class="text-primary">Тут ви можете залишити свій відгук</p>
-<p class="text-primary">Поля відзначені<span class="text-danger"> * </span>обовязковідля заповнення</p>
+<p class="text-primary">Поля відзначені<span class="text-danger"> * </span>обовязкові для заповнення</p>
 <br>
 
 <form method="post" action="" class="form-horizontal">

@@ -25,33 +25,6 @@ CREATE TABLE IF NOT EXISTS users
 INSERT IGNORE INTO `users` (`id`, `name`, `login`, `pass`) VALUES
 (1,'Admin', 'admin','$2a$13$va0r2JOjPHbUitpDf04aw.bqhuSZsH9TRx6fANmmxTFyDcVnawB9W');
 
-
--- ##############################################
--- Структура таблиці complaints
--- DROP TABLE IF EXISTS complaints;
-CREATE TABLE IF NOT EXISTS complaints
-(
-	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-	username VARCHAR(100) NOT NULL COMMENT 'Name user',
-	email VARCHAR(100) NOT NULL  COMMENT 'Email Users',
-	site VARCHAR(255) COMMENT 'Site',
-    country VARCHAR(3)COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT 'Country user',
-    complaint TEXT NOT NULL COMMENT 'Text complaint',
-    adddate DATETIME DEFAULT NOW() COMMENT 'Date creation',
-    browser VARCHAR(100) NOT NULL DEFAULT '' COMMENT '',
-    ipaddress VARCHAR(50) NOT NULL DEFAULT '' COMMENT '',
-	CONSTRAINT pkey_complaints PRIMARY KEY (id),
-	CONSTRAINT fkey_country FOREIGN KEY (country) 
-		REFERENCES countriescodes (code),
-	INDEX ixNamee (username),
-    INDEX ixEmail (email),
-    INDEX ixDate (adddate)
-)
-    ENGINE=InnoDB
-    CHARACTER SET utf8
-	COLLATE utf8_general_ci
-	COMMENT 'Таблиця скарг';
-
 -- #######################################################
 -- Структура таблиці `countriescodes`
 -- DROP TABLE IF EXISTS countriescodes;
@@ -307,3 +280,32 @@ INSERT INTO `countriescodes` (`code`, `title`) VALUES
 ('ATA', 'Антарктида'),
 ('AIA', 'Ангилья'),
 ('ASM', 'Американское Самоа');
+
+
+
+
+-- ##############################################
+-- Структура таблиці complaints
+-- DROP TABLE IF EXISTS complaints;
+CREATE TABLE IF NOT EXISTS complaints
+(
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	username VARCHAR(100) NOT NULL COMMENT 'Name user',
+	email VARCHAR(100) NOT NULL  COMMENT 'Email Users',
+	site VARCHAR(255) COMMENT 'Site',
+    country VARCHAR(3)COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT 'Country user',
+    complaint TEXT NOT NULL COMMENT 'Text complaint',
+    adddate DATETIME DEFAULT NOW() COMMENT 'Date creation',
+    browser VARCHAR(100) NOT NULL DEFAULT '' COMMENT '',
+    ipaddress VARCHAR(50) NOT NULL DEFAULT '' COMMENT '',
+	CONSTRAINT pkey_complaints PRIMARY KEY (id),
+	CONSTRAINT fkey_country FOREIGN KEY (country) 
+		REFERENCES countriescodes (code),
+	INDEX ixNamee (username),
+    INDEX ixEmail (email),
+    INDEX ixDate (adddate)
+)
+    ENGINE=InnoDB
+    CHARACTER SET utf8
+	COLLATE utf8_general_ci
+	COMMENT 'Таблиця скарг';

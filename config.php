@@ -1,7 +1,8 @@
-u485438947_zyozi<?php
+<?php
 //Задаем константы:
 define ('DS', DIRECTORY_SEPARATOR); // разделитель для путей к файлам
 $sitePath = realpath(dirname(__FILE__) . DS);
+$sitePath = str_replace("/home/u485438947/public_html/", "", $sitePath);
 define ('SITE_PATH', $sitePath); // путь к корневой папке сайта
  
 // для подключения к бд
